@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+        <!-- required meta tags -->
+        <meta charset="UTF-8">
+        <!-- Bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Plot.ly -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script> 
+        <!-- Our CSS -->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <!-- Title (shown in browser tab)-->
+        <title>Addiction & Mental Health</title>
+        <!-- Insert icon with title in browser tab -->
+        <link rel="shortcut icon" type="image/x-icon" href="../static\images\drug-addiction.png"> 
+  </head>
+
+  <body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+        <a class="navbar-brand">Addiction & Mental Health</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index">Intro</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="survey">Survey</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="help">Where do I get help?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="data">Raw data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <!-- First info -->
+        <div class='row'>
+            <div class='col-12'> 
+                <h1>Do you want to predict your future?<br>take the survey</h1>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-6'>
+                <!-- survey box -->
+                <form id='searchForm'>
+                    <h3 class='text-center'>Survey Questions</h3>
+                    <div class='form-group'>
+                        <label for='Age'>What is your age?</label>
+                        <select class='form-control' id='Age'>
+                            <option>18 years old</option>
+                            <option>19 years old</option>
+                            <option>20 years old</option>
+                            <option>21 years old</option>
+                            <option>22 or 23 years old</option>
+                            <option>24 or 25 years old</option>
+                            <option>between 26 and 29 years old</option>
+                            <option>between 30 and 34 years old</option>
+                            <option>between 35 and 49 years old</option>
+                            <option>between 50 and 64 years old</option>
+                            <option>65 years or older</option>
+                        </select>
+                        <label for='Marit'>What is your marital status?</label>
+                        <select class='form-control' id='Age'>
+                            <option>Married</option>
+                            <option>Widowed</option>
+                            <option>Divorced or Separated</option>
+                            <option>Never been married</option>
+                        </select>
+                        <label for='Health'>How is your overall health?</label>
+                        <select class='form-control' id='Age'>
+                            <option>Excellent</option>
+                            <option>Very good</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                            <option>Poor</option>
+                            <option>Don't know</option>
+                        </select>
+                        <label for='Mov'>How many times have you moved in the past 12 months?</label>
+                        <select class='form-control' id='Age'>
+                            <option>0 times</option>
+                            <option>1 time</option>
+                            <option>2 times</option>
+                            <option>3 or more times</option>
+                        </select>
+                        <label for='Attr'>What is your sexual attraction?</label>
+                        <select class='form-control' id='Attr'>
+                            <option>Only attracted to opposite sex</option>
+                            <option>Mostly attracted to opposite sex</option>
+                            <option>Equally attracted to males and females</option>
+                            <option>Mostly attracted to same sex</option>
+                            <option>Only attracted to same sex</option>
+                            <option>Not sure</option>
+                            <option>Skip</option>
+                        </select>
+                        <label for='Ident'>What is your sexual identity?</label>
+                        <select class='form-control' id='Ident'>
+                            <option>Heterosexual</option>
+                            <option>Lesbian or Gay</option>
+                            <option>Bisexual</option>
+                            <option>Don't know</option>
+                            <option>Skip</option>
+                        </select>
+                        <label for='DiffThink'>Do you have serious difficulty concentrating, remembering or making decisions?</label>
+                        <select class='form-control' id='DiffThink'>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <label for='Edu'>What is your highest education?</label>
+                        <select class='form-control' id='Edu'>
+                            <option>5th grade or less grade completed</option>
+                            <option>6th grade completed</option>
+                            <option>7th grade completed</option>
+                            <option>8th grade completed</option>
+                            <option>9th grade completed</option>
+                            <option>10th grade completed</option>
+                            <option>11th or 12th grade completed, no diploma</option>
+                            <option>High school diploma/GED</option>
+                            <option>Some college credit, but no degree</option>
+                            <option>Associate degree (for example, AA, AS)</option>
+                            <option>College graduate or higher</option>
+                        </select>
+                        <label for='Work'>What was your work situation in the past week?</label>
+                        <select class='form-control' id='Work'>
+                            <option>Worked full-time</option>
+                            <option>Worked part-time</option>
+                            <option>Has job or volunteer worker, did not work</option>
+                            <option>Unemployed/on layoff, looking for work</option>
+                            <option>Disabled</option>
+                            <option>Keeping house full-time</option>
+                            <option>In school/ training</option>
+                            <option>Retired</option>
+                            <option>Does not have a job, some other reason</option>
+                        </select>
+                        <label for='Empl'>How many employers did you have in the past 12 months?</label>
+                        <select class='form-control' id='Empl'>
+                            <option>1 employer</option>
+                            <option>2 employers</option>
+                            <option>3 employers</option>
+                            <option>4 or more employers</option>
+                        </select>
+                        <label for='Stat'>What is your employment status?</label>
+                        <select class='form-control' id='Stat'>
+                            <option>Employed full-time</option>
+                            <option>Employed part-time</option>
+                            <option>Unemployed</option>
+                            <option>Other (incl. not in labour force)</option>
+                        </select>
+                        <label for='Income'>What is your imcome?</label>
+                        <select class='form-control' id='Income'>
+                            <option>Less than $10,000</option>
+                            <option>$10,000 - $19,999</option>
+                            <option>$20,000 - $29,999</option>
+                            <option>$30,000 - $39,999</option>
+                            <option>$40,000 - $49,999</option>
+                            <option>$50,000 - $74,999</option>
+                            <option>$75,000 or more</option>
+                        </select>
+                        <label for='Cig'>Have you smoked at least a 100 cigarettes in your lifetime?</label>
+                        <select class='form-control' id='Cig'>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>I never smoked cigarettes</option>
+                        </select>
+                        <label for='AgeSmoke'>What age were you when you first smoked a cigarette?</label>
+                        <select class='form-control' id=''>
+                            <option></option>
+                            <option>I never smoked cigarettes</option>
+                            <input type='text' class='form-control' id='AgeSmoke' placeholder=''></input>
+                        </select>
+                        <label for='NoAlcohol'>In the last 30 days, on days you had an alcoholic beverage, how many drinks did you have?</label>
+                        <select class='form-control' id='NoAlcohol'> 
+                            <option></option>
+                            <option>I never drink alcohol</option>
+                            <option>I did not drink alcohol in the last 30 days</option>
+                            <input type='text' class='form-control' id='NoAlcohol' placeholder=''></input>
+                        </select>
+                        <button id='button' type='submit' class='btn btn-default btn-block'>Submit</button>
+                        <button id='button2' type='reset' class='btn btn-default btn-block'>Reset the form</button>
+                    </div>
+                </form>  
+            </div>        
+            <div class="col-lg-6">
+                <form id='searchForm'>
+                    <h3 class='text-center'>Predictions</h3>
+                    <div class='form-group'>
+                        <label for='Smoke'>Estimate number of days you will smoke in the next 30 days:</label>
+                        <input type='text' class='form-control' id='Smoke' placeholder='' readonly></input>
+                        <label for='Alcohol'>Estimate number of days you will drink an alcoholic beverage in the next 30 days:</label>
+                        <input type='text' class='form-control' id='Alcohol' placeholder='' readonly></input>
+                        <label for='Mental'>The estimated chance you have a serious mental illness in %:</label>
+                        <input type='text' class='form-control' id='Mental' placeholder='' readonly></input>
+                        <label for='Drugs'>How likely are you to use the following substances in your lifetime in %:</label>
+                        <input type='text' class='form-control' id='Marijuana' placeholder='Marijuana/ Hashish' readonly></input><br>
+                        <input type='text' class='form-control' id='Cocaine' placeholder='Cocaine' readonly></input><br>
+                        <input type='text' class='form-control' id='Crack' placeholder='Crack' readonly></input><br>
+                        <input type='text' class='form-control' id='Heroin' placeholder='Heroin' readonly></input><br>
+                        <input type='text' class='form-control' id='Meth' placeholder='Methamphetamines' readonly></input><br>
+                        <input type='text' class='form-control' id='Pain' placeholder='Pain relievers' readonly></input><br>
+                        <input type='text' class='form-control' id='Tran' placeholder='Tranquilizers' readonly></input><br>
+                        <input type='text' class='form-control' id='Stimulants' placeholder='Stimulants' readonly></input><br>
+                        <input type='text' class='form-control' id='Sedatives' placeholder='Sedatives' readonly></input><br>
+                        <input type='text' class='form-control' id='Hal' placeholder='Hallucinogens' readonly></input>
+                        <small id='' class='form-text' text-muted>Hallucinogens include LSD, ACID, PCP, Peyote, Psilocybin like Mushrooms, Ecstacy or Molly (MDMA), Ketamine, DMT, AMT, Foxy</small>
+                        <input type='text' class='form-control' id='Inhalants' placeholder='Inhalants' readonly></input>
+                        <small id='' class='form-text' text-muted>Inhalants include Amyl, Nitrate, 'Poppers, Rush, Correction fluid, Degreaser, Gasoline, Lighter fluid, Glue, Shoe polish, Toluene, Halothane, Ether, Lacquer thinner, Paint solvent, Butane, Propane, Nitrous oxide, 'Whippets', Felt-tip markers, Spray paint, Aerosol sprays</small><br>
+                    </div>
+                </form>
+            </div>
+            
+                    
+              
+           
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class='footer'>
+        <p class='bottom'>Addiction & Mental Health - Survey</p>
+    </footer> 
+
+<!-- d3 JavaScript -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.js'></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- D3-contour JavaScript -->
+<script src="https://d3js.org/d3-array.v2.min.js"></script>
+<script src="https://d3js.org/d3-contour.v2.min.js"></script>  
+<!-- Our JS -->
+<script type="text/javascript" src="../static/js/app.js"></script>
+
+</body>
+</html>
