@@ -129,8 +129,8 @@ function Prediction() {
     // define employers field name and input text and run prediction
 	var emplInput = emplDropdown.property("value");
 	if (emplInput == '1 employer') {WRKNUMJOB2 = 1}
-    else if (emplInput == '2 employer') {WRKNUMJOB2 = 2}
-    else if (emplInput == '3 employer') {WRKNUMJOB2 = 3}
+    else if (emplInput == '2 employers') {WRKNUMJOB2 = 2}
+    else if (emplInput == '3 employers') {WRKNUMJOB2 = 3}
     else if (emplInput == '4 or more employers') {WRKNUMJOB2 = 4};
 
     // define employed field name and input text and run prediction
@@ -169,34 +169,8 @@ function Prediction() {
     else if (noAlcoholDInput == 'I did not drink alcohol in the last 30 days') {ALCUS30D = 991}
     else ALCUS30D = noAlcoholTInput;    
 
-    // predictData = {
-    //     AGE2: AGE2,
-    //     IRMARIT: IRMARIT,
-    //     HEALTH: HEALTH,
-    //     MOVSINPYR2: MOVSINPYR2,
-    //     SEXATRACT: SEXATRACT,
-    //     SEXIDENT: SEXIDENT,
-    //     DIFFTHINK: DIFFTHINK,
-    //     IREDUHIGHST2: IREDUHIGHST2,
-    //     WRKSTATWK2: WRKSTATWK2,
-    //     WRKNUMJOB2: WRKNUMJOB2,
-    //     IRWRKSTAT: IRWRKSTAT,
-    //     IRPINC3: IRPINC3,
-    //     CIG100LF: CIG100LF,
-    //     CIGTRY: CIGTRY,
-    //     ALCUS30D: ALCUS30D
-    // }
-
-
-    // d3.request("/api/smoke_model")
-    // .header("Content-Type", "application/json")
-    // .post(JSON.stringify(predictData), function (error,data) {}).then(response => {
-    //     console.log(response);
-    // }); 
-
-    d3.json("/api/smoke_model", {
-      method:"POST",
-      body: JSON.stringify({
+    // dictionary of all the inputfield results
+    input_fields = {
         AGE2: AGE2,
         IRMARIT: IRMARIT,
         HEALTH: HEALTH,
@@ -212,30 +186,141 @@ function Prediction() {
         CIG100LF: CIG100LF,
         CIGTRY: CIGTRY,
         ALCUS30D: ALCUS30D
-      }),
+      };
+
+    
+    d3.json("/api/prediction_models", {
+      method:"POST",
+      body: JSON.stringify(input_fields),
       headers: {
         "Content-type": "application/json"
       }
     })
-    .then(smoke_result => {
-        console.log(smoke_result);
-        var smokeOutput; 
+    .then(predictions => {
+        console.log('predictions:', predictions);
+        
+        // Smoke prediction model
+        var smoke_result = predictions[0].smoke_prediction;
+        console.log('smoke_result:', smoke_result)
+        var smokeOutput = ''; 
         if (smoke_result == "0") {smokeOutput = '1 or 2 days (this is accurate 99% of the time)'}
-        else if (smoke_result == "1") {var smokeOutput = '3 to 5 days (this is accurate 99% of the time)'}
-        else if (smoke_result == "2") {var smokeOutput = '6 to 9 days (this is accurate 99% of the time)'}
-        else if (smoke_result == 3) {var smokeOutput = '10 to 19 days (this is accurate 99% of the time)'}
-        else if (smoke_result == 4) {var smokeOutput = '20 to 29 days days (this is accurate 99% of the time)'}
-        else if (smoke_result == 5) {var smokeOutput = 'all 30 days (this is accurate 99% of the time)'}
-        else if (smoke_result == "6") {smokeOutput = 'you never smoked cigarettes (this is accurate 99% of the time)'}
-        else if (smoke_result == 7) {var smokeOutput = 'you will not smoke any cigarettes in the next 30 days (this is accurate 99% of the time)'};
+        else if (smoke_result == "1") {smokeOutput = '3 to 5 days (this is accurate 99% of the time)'}
+        else if (smoke_result == "2") {smokeOutput = '6 to 9 days (this is accurate 99% of the time)'}
+        else if (smoke_result == '3') {smokeOutput = '10 to 19 days (this is accurate 99% of the time)'}
+        else if (smoke_result == '4') {smokeOutput = '20 to 29 days (this is accurate 99% of the time)'}
+        else if (smoke_result == '5') {smokeOutput = 'all 30 days (this is accurate 99% of the time)'}
+        else if (smoke_result == '6') {smokeOutput = 'you never smoked cigarettes and you will not smoke any cigarettes in the next 30 days (this is accurate 99% of the time)'}
+        else if (smoke_result == '7') {smokeOutput = 'you will not smoke any cigarettes in the next 30 days (this is accurate 99% of the time)'};
         smokePredict.property('value', smokeOutput);
 
-        console.log(smokeOutput);
-        
+        // alcohol prediction model
+        var alcohol_result = predictions[1].alcohol_prediction;
+        console.log('alcohol_result:', alcohol_result)
+        var alcoholOutput = ''; 
+        if (alcohol_result == "31") {alcoholOutput = 'you will not drink any alcohol (this is accurate 37% of the time)'}
+        else alcoholOutput = `you will drink ${alcohol_result} days of the next 30 days (this is accurate 37% of the time)`
+        alcoholPredict.property('value', alcoholOutput);
 
+        // mental health prediction model
+        var mental_result = predictions[2].mental_prediction;
+        var mentalOutput = ''; 
+        if (mental_result == "1") {mentalOutput = 'you do not have a probable serious mental illness (this is accurate 90% of the time)'}
+        else if (mental_result == "0") {mentalOutput = 'you have a probable serious mental illness (this is accurate 90% of the time)'}
+        mentalPredict.property('value', mentalOutput);
+
+        // Marijuana prediction model
+        var mj_result = predictions[3].mj_prediction;
+        var mjOutput = ''; 
+        if (mj_result == "1") {mjOutput = 'Marijuana/ Hashish - not likely (this is accurate 72% of the time)'}
+        else if (mj_result == "0") {mjOutput = 'Marijuana/ Hashish - very likely (this is accurate 72% of the time)'}
+        marijuanaPredict.property('value', mjOutput);
+
+        // Cocaine prediction model
+        var coc_result = predictions[4].coc_prediction;
+        var cocOutput = ''; 
+        if (coc_result == "1") {cocOutput = 'Cocaine - not likely (this is accurate 72% of the time)'}
+        else if (coc_result == "0") {cocOutput = 'Cocaine - very likely (this is accurate 72% of the time)'}
+        cocainePredict.property('value', cocOutput);
+
+        // Crack prediction model
+        var crk_result = predictions[5].crk_prediction;
+        var crkOutput = ''; 
+        if (crk_result == "1") {crkOutput = 'Crack - not likely (this is accurate 72% of the time)'}
+        else if (crk_result == "0") {crkOutput = 'Crack - very likely (this is accurate 72% of the time)'}
+        crackPredict.property('value', crkOutput);
+
+        // Heroine prediction model
+        var her_result = predictions[6].her_prediction;
+        var herOutput = ''; 
+        if (her_result == "1") {herOutput = 'Heroin - not likely (this is accurate 72% of the time)'}
+        else if (her_result == "0") {herOutput = 'Heroin - very likely (this is accurate 72% of the time)'}
+        heroinPredict.property('value', herOutput);
+
+        // Meth prediction model
+        var meth_result = predictions[7].meth_prediction;
+        var methOutput = ''; 
+        if (meth_result == "1") {methOutput = 'Methamphetamines - not likely (this is accurate 72% of the time)'}
+        else if (meth_result == "0") {methOutput = 'Methamphetamines - very likely (this is accurate 72% of the time)'}
+        methPredict.property('value', methOutput);
+
+        // Pain prediction model
+        var pnr_result = predictions[8].pnr_prediction;
+        var pnrOutput = ''; 
+        if (pnr_result == "1") {pnrOutput = 'Pain relievers - not likely (this is accurate 72% of the time)'}
+        else if (pnr_result == "0") {pnrOutput = 'Pain relievers - very likely (this is accurate 72% of the time)'}
+        painPredict.property('value', pnrOutput);
+
+        // Tranquiliser prediction model
+        var trk_result = predictions[9].trk_prediction;
+        var trkOutput = ''; 
+        if (trk_result == "1") {trkOutput = 'Tranquilizers - not likely (this is accurate 72% of the time)'}
+        else if (trk_result == "0") {trkOutput = 'Tranquilizers - very likely (this is accurate 72% of the time)'}
+        tranPredict.property('value', trkOutput);
+
+        // Stimulants prediction model
+        var stm_result = predictions[10].stm_prediction;
+        var stmOutput = ''; 
+        if (stm_result == "1") {stmOutput = 'Stimulants - not likely (this is accurate 72% of the time)'}
+        else if (stm_result == "0") {stmOutput = 'Stimulants - very likely (this is accurate 72% of the time)'}
+        stimulantsPredict.property('value', stmOutput);
+
+        // Sedatives prediction model
+        var sed_result = predictions[11].sed_prediction;
+        var sedOutput = ''; 
+        if (sed_result == "1") {sedOutput = 'Sedatives - not likely (this is accurate 72% of the time)'}
+        else if (sed_result == "0") {sedOutput = 'Sedatives - very likely (this is accurate 72% of the time)'}
+        sedativesPredict.property('value', sedOutput);
+
+        // Hallucinogens prediction model
+        var hal_result = predictions[12].hal_prediction;
+        var halOutput = ''; 
+        if (hal_result == "1") {halOutput = 'Hallucinogens - not likely (this is accurate 72% of the time)'}
+        else if (hal_result == "0") {halOutput = 'Hallucinogens - very likely (this is accurate 72% of the time)'}
+        halPredict.property('value', halOutput);
+
+        // Inhalants prediction model
+        var inh_result = predictions[13].inh_prediction;
+        var inhOutput = ''; 
+        if (inh_result == "1") {inhOutput = 'Inhalants - not likely (this is accurate 72% of the time)'}
+        else if (inh_result == "0") {inhOutput = 'Inhalants - very likely (this is accurate 72% of the time)'}
+        inhalantsPredict.property('value', inhOutput);
     });
 
-    console.log("End of submit");
+    // // additional prediction model
+    // d3.json("/api/alcohol_model", {
+    //     method:"POST",
+    //     body: JSON.stringify(input_fields),
+    //     headers: {
+    //       "Content-type": "application/json"
+    //     }
+    //   })
+    //   .then(alcohol_prediction => {
+    //     alcohol_result = alcohol_prediction.alcohol_prediction
+    //     var alcoholOutput = ''; 
+    //     if (alcohol_result == "31") {alcoholOutput = 'you will not drink any alcohol (this is accurate 37% of the time)'}
+    //     else alcoholOutput = `you will drink ${alcohol_result} days of the next 30 days (this is accurate 37% of the time)`
+    //     alcoholPredict.property('value', alcoholOutput);
+    //   });
 	
 };
 
