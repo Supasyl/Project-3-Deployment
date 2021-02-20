@@ -1,27 +1,19 @@
 import numpy as np
 import pandas as pd
 
-import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, Date, Numeric
+# import sqlalchemy
+# from sqlalchemy.ext.automap import automap_base
+# from sqlalchemy.orm import Session
+# from sqlalchemy import create_engine, func
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import Column, Integer, String, Float, Date, Numeric
 
-from flask import Flask, jsonify, render_template
-from flask import Flask
+from flask import Flask, jsonify, render_template, jsonify, request, redirect
 from flask_restful import Api
 from predict import Predict
 import requests
-# from example import run_request
-# from models import create_classes
 import os
-from flask import (
-    Flask,
-    render_template,
-    jsonify,
-    request,
-    redirect)
+
 
 # Database1 Setup
 engine = create_engine("sqlite:///project3_raw_final.sqlite")
@@ -40,119 +32,80 @@ app = Flask(__name__)
 #################################################
 # Flask Routes
 
-inputfields:
-'AGE2',
- 'IRMARIT',
- 'HEALTH',
- 'MOVSINPYR2',
- 'SEXATRACT',
- 'SEXIDENT',
- 'DIFFTHINK',
- 'IREDUHIGHST2',
- 'WRKSTATWK2',
- 'IRWRKSTAT',
- 'WRKNUMJOB2',
- 'IRPINC3',
- 'CIG100LF',
- 'ALCUS30D',
- 'CIGTRY',
- 'CG30EST',
+# inputfields:
+# 'AGE2',
+#  'IRMARIT',
+#  'HEALTH',
+#  'MOVSINPYR2',
+#  'SEXATRACT',
+#  'SEXIDENT',
+#  'DIFFTHINK',
+#  'IREDUHIGHST2',
+#  'WRKSTATWK2',
+#  'IRWRKSTAT',
+#  'WRKNUMJOB2',
+#  'IRPINC3',
+#  'CIG100LF',
+#  'ALCUS30D',
+#  'CIGTRY',
+#  'CG30EST',
 
- result fields:
- 'ALCDAYS',
- 'COCEVER',
- 'CRKEVER',
- 'MJEVER',
- 'HEREVER',
- 'METHAMEVR',
- 'PNRANYLIF',
- 'TRQANYLIF',
- 'STMANYLIF',
- 'SEDANYLIF', 
- 'halluciogens', 
- 'inhalants',
- 'not_mental'
- 
-# Add predict to route predict
-API.add_resource(Predict, '/predict') # is this to the psmoke.py to run the predication?
+#  result fields:
+#  'ALCDAYS',
+#  'COCEVER',
+#  'CRKEVER',
+#  'MJEVER',
+#  'HEREVER',
+#  'METHAMEVR',
+#  'PNRANYLIF',
+#  'TRQANYLIF',
+#  'STMANYLIF',
+#  'SEDANYLIF', 
+#  'halluciogens', 
+#  'inhalants',
+#  'not_mental'
 
-@app.route('/parameters/<petal_length>&<sepal_length>&<petal_width>&<sepal_width>')
-def get_prediction(petal_length=5, sepal_length=5, petal_width=5, sepal_width=5):
-    url = 'https://jl-uwa-demo.herokuapp.com/predict'
-    body = {
-        "petal_length": petal_length,
-        "sepal_length": sepal_length,
-        "petal_width": petal_width,
-        "sepal_width": sepal_width
-    }
-    response = requests.post(url, data=body)
-    return response.json()
+# Load prebuilt model
+SMOKE_MODEL = joblib.load('Predictions/Smoking_LogRegr_final.smd')
+# ALCOHOL_MODEL = joblib.load('Smoking_LogRegr_final.smd')
+# MENTAL_MODEL = joblib.load('Smoking_LogRegr_final.smd')
+# COC_MODEL = joblib.load('Drugs_LogRegr_final_coc.smd')
+# CRK_MODEL = joblib.load('Drugs_LogRegr_final_crk.smd')
+# HALL_MODEL = joblib.load('Drugs_LogRegr_final_hall.smd')
+# HER_MODEL = joblib.load('Drugs_LogRegr_final_her.smd')
+# INHALENTS_MODEL = joblib.load('Drugs_LogRegr_final_inhalants.smd')
+# METH_MODEL = joblib.load('Drugs_LogRegr_final_meth.smd')
+# MJ_MODEL = joblib.load('Drugs_LogRegr_final_MJ.smd')
+# PNR_MODEL = joblib.load('Drugs_LogRegr_final_pnr.smd')
+# SED_MODEL = joblib.load('Drugs_LogRegr_final_sed.smd')
+# TRK_MODEL = joblib.load('Drugs_LogRegr_final_trq.smd')
 
-
-# @app.route("/")
-# def welcome():
-#     return (
-#         f"Welcome!<br/>"
-#         f"Available Route:<br/>"
-#         f"/api/v1.0/data"
-
-#     )
-
-# @app.route("/api/v1.0/data")
-# def apidata():
-#     """Return the data as json"""
-#     # Sets an object to utilize the default declarative base in SQL Alchemy
-#     Base = declarative_base()
-
-#     # Creates Classes which will serve as the anchor points for our Tables
-#     class addiction_mentalhealth(Base):
-#         __tablename__ = 'training_data'
-#         index = Column(Integer, primary_key=True)
-#         AGE2 = Column(Integer)
-#         IRMARIT = Column(Integer)
-#         HEALTH = Column(Integer)
-#         MOVSINPYR2 = Column(Integer)
-#         SEXATRACT = Column(Integer)
-#         SEXIDENT = Column(Integer)
-#         IREDUHIGHST2 = Column(Integer)
-#         WRKSTATWK2 = Column(Integer)
-#         IRWRKSTAT = Column(Integer)
-#         WRKNUMJOB2 = Column(Integer)
-#         IRPINC3 = Column(Integer)
-#         DIFFTHINK = Column(Integer)
-#         CIG100LF = Column(Integer)
-#         ALCUS30D = Column(Integer)
-#         CIGTRY = Column(Integer)
-#         CG30EST = Column(Integer)
-#         ALCDAYS = Column(Integer)
-#         MJEVER = Column(Integer)
-#         COCEVER = Column(Integer)
-#         CRKEVER = Column(Integer)
-#         HEREVER = Column(Integer)
-#         METHAMEVR = Column(Integer)
-#         PNRANYLIF = Column(Integer)
-#         TRQANYLIF = Column(Integer)
-#         STMANYLIF = Column(Integer)
-#         SEDANYLIF = Column(Integer)
-#         halluciogens = Column(Integer)
-#         inhalants = Column(Integer)
-#         not_mental = Column(Integer)
-    
-#     data = session.query(addiction_mentalhealth)
-#     session.close()
-
-    # # Create a list to hold data'
-
-    # list = []
-    # for result in data:
-    #     row = {}
-    #     row["date"] = result.date
-    #     row["latitude"] = result.latitude
-    #     row["longitude"] = result.longitude
-    #     row["uv_index"] = result.uv_index
-    #     list.append(row)
- 
-    # return jsonify(list)
+# receiving the json file from the app.js
+@app.route("/api/smoke_model", methods=["GET", "POST"])
+def send():
+    if request.method == "POST":
+        if not request.json: 
+            abort(400)
+        input = {
+            'AGE2': request.json['AGE2'],
+            'IRMARIT': request.json['IRMARIT'],
+            'HEALTH': request.json['HEALTH'],
+            'MOVSINPYR2': request.json['MOVSINPYR2'],
+            'SEXATRACT': request.json['SEXATRACT'],
+            'SEXIDENT': request.json['SEXIDENT'],
+            'DIFFTHINK': request.json['DIFFTHINK'],
+            'IREDUHIGHST2': request.json['IREDUHIGHST2'],
+            'WRKSTATWK2': request.json['WRKSTATWK2'],
+            'WRKNUMJOB2': request.json['WRKNUMJOB2'],
+            'IRWRKSTAT': request.json['IRWRKSTAT'],
+            'IRPINC3': request.json['IRPINC3'],
+            'CIG100LF': request.json['CIG100LF'],
+            'CIGTRY': request.json['CIGTRY'],
+            'ALCUS30D': request.json['ALCUS30D']
+        }
+        result = yourModel.predict(input)
+        return jsonify({'smoke_result': smoke_result}), 200 # return success 
+    return 'To use the survey, please answer all questions.' # message to input info/ usage information
 
 
 @app.route("/index")
