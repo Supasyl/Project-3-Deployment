@@ -169,7 +169,7 @@ function Prediction() {
     else if (noAlcoholDInput == 'I did not drink alcohol in the last 30 days') {ALCUS30D = 991}
     else ALCUS30D = noAlcoholTInput;    
 
-    d3.json('https://jsonplaceholder.typicode.com/posts', {
+    d3.json(, {
       method:"POST",
       body: JSON.stringify({
         AGE2: AGE2,
@@ -201,7 +201,7 @@ function Prediction() {
         else if (smoke_result == 5) {var smokeOutput = 'all 30 days (this is accurate 99% of the time)'}
         else if (smoke_result == 6) {var smokeOutput = 'you never smoked cigarettes (this is accurate 99% of the time)'}
         else if (smoke_result == 7) {var smokeOutput = 'you will not smoke any cigarettes in the next 30 days (this is accurate 99% of the time)'};
-        smokePredict.property('value' = smokeOutput);
+        smokePredict.property('value', smokeOutput);
 
 
     });

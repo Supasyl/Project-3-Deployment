@@ -1,16 +1,17 @@
 import numpy as np
 import pandas as pd
 
-# import sqlalchemy
-# from sqlalchemy.ext.automap import automap_base
-# from sqlalchemy.orm import Session
-# from sqlalchemy import create_engine, func
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import Column, Integer, String, Float, Date, Numeric
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Float, Date, Numeric
 
-from flask import Flask, jsonify, render_template, jsonify, request, redirect
+from flask import Flask, jsonify, render_template, jsonify, redirect#, request
 from flask_restful import Api
-from predict import Predict
+# from predict import Predict
+import joblib
 import requests
 import os
 
