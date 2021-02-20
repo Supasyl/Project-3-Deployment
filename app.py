@@ -8,11 +8,11 @@ from sqlalchemy import create_engine, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, Date, Numeric
 
-from flask import Flask, jsonify, render_template, jsonify, redirect#, request
+from flask import Flask, jsonify, render_template, jsonify, redirect, request # from flask import request
 from flask_restful import Api
 # from predict import Predict
 import joblib
-import requests
+import requests # requests with s
 import os
 
 
@@ -87,7 +87,9 @@ def send():
     if request.method == "POST":
         if not request.json: 
             abort(400)
-        input = {
+
+        print(f"JSON content: {request.json}")
+        myInputs = {
             'AGE2': request.json['AGE2'],
             'IRMARIT': request.json['IRMARIT'],
             'HEALTH': request.json['HEALTH'],
@@ -104,8 +106,10 @@ def send():
             'CIGTRY': request.json['CIGTRY'],
             'ALCUS30D': request.json['ALCUS30D']
         }
-        result = yourModel.predict(input)
-        return jsonify({'smoke_result': smoke_result}), 200 # return success 
+        X_new = np.fromiter(myInputs.values(), dtype=float) 
+        # Generate prediction for a single value
+        smoke_result = {'smoke_result': str(SMOKE_MODEL.predict([X_new])[0])}
+        return jsonify(smoke_result), 200 # return success 
     return 'To use the survey, please answer all questions.' # message to input info/ usage information
 
 

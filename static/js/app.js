@@ -169,7 +169,32 @@ function Prediction() {
     else if (noAlcoholDInput == 'I did not drink alcohol in the last 30 days') {ALCUS30D = 991}
     else ALCUS30D = noAlcoholTInput;    
 
-    d3.json(, {
+    // predictData = {
+    //     AGE2: AGE2,
+    //     IRMARIT: IRMARIT,
+    //     HEALTH: HEALTH,
+    //     MOVSINPYR2: MOVSINPYR2,
+    //     SEXATRACT: SEXATRACT,
+    //     SEXIDENT: SEXIDENT,
+    //     DIFFTHINK: DIFFTHINK,
+    //     IREDUHIGHST2: IREDUHIGHST2,
+    //     WRKSTATWK2: WRKSTATWK2,
+    //     WRKNUMJOB2: WRKNUMJOB2,
+    //     IRWRKSTAT: IRWRKSTAT,
+    //     IRPINC3: IRPINC3,
+    //     CIG100LF: CIG100LF,
+    //     CIGTRY: CIGTRY,
+    //     ALCUS30D: ALCUS30D
+    // }
+
+
+    // d3.request("/api/smoke_model")
+    // .header("Content-Type", "application/json")
+    // .post(JSON.stringify(predictData), function (error,data) {}).then(response => {
+    //     console.log(response);
+    // }); 
+
+    d3.json("/api/smoke_model", {
       method:"POST",
       body: JSON.stringify({
         AGE2: AGE2,
@@ -189,22 +214,28 @@ function Prediction() {
         ALCUS30D: ALCUS30D
       }),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json"
       }
     })
-    .then(json => {
-        if (smoke_result == 0) {var smokeOutput = '1 or 2 days (this is accurate 99% of the time)'}
-        else if (smoke_result == 1) {var smokeOutput = '3 to 5 days (this is accurate 99% of the time)'}
-        else if (smoke_result == 2) {var smokeOutput = '6 to 9 days (this is accurate 99% of the time)'}
+    .then(smoke_result => {
+        console.log(smoke_result);
+        var smokeOutput; 
+        if (smoke_result == "0") {smokeOutput = '1 or 2 days (this is accurate 99% of the time)'}
+        else if (smoke_result == "1") {var smokeOutput = '3 to 5 days (this is accurate 99% of the time)'}
+        else if (smoke_result == "2") {var smokeOutput = '6 to 9 days (this is accurate 99% of the time)'}
         else if (smoke_result == 3) {var smokeOutput = '10 to 19 days (this is accurate 99% of the time)'}
         else if (smoke_result == 4) {var smokeOutput = '20 to 29 days days (this is accurate 99% of the time)'}
         else if (smoke_result == 5) {var smokeOutput = 'all 30 days (this is accurate 99% of the time)'}
-        else if (smoke_result == 6) {var smokeOutput = 'you never smoked cigarettes (this is accurate 99% of the time)'}
+        else if (smoke_result == "6") {smokeOutput = 'you never smoked cigarettes (this is accurate 99% of the time)'}
         else if (smoke_result == 7) {var smokeOutput = 'you will not smoke any cigarettes in the next 30 days (this is accurate 99% of the time)'};
         smokePredict.property('value', smokeOutput);
 
+        console.log(smokeOutput);
+        
 
     });
+
+    console.log("End of submit");
 	
 };
 
