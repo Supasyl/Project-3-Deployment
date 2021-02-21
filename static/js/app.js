@@ -324,10 +324,17 @@ function Prediction() {
 	
 };
 
+function redirect() {
+	// prevent enter from refreshing the page
+	d3.event.preventDefault();
+    d3.json("/index");
+});
+
+
 // when pressing submit button or press enter, use function
 let submitButton = d3.select('#button');
 let form = d3.select('#searchForm');
 form.on('submit', Prediction);
 
 let resetButton = d3.select('#button2');
-// form.on('reset', buildTable);
+form.on('reset', redirect);
