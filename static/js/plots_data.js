@@ -360,15 +360,15 @@ function init() {
      /////////////////////////////////////////////////////////////
     // SMOKED_100_CIG
     var pie13 = {
-        values: [],
-        labels: [],
+        values: [22951, 36718, 60874],
+        labels: ['Yes', 'No', 'Never smoked cigarettes'],
         type: 'pie',
         name: 'SMOKED_100_CIG',
-        marker: {colors: ['#ba5536', '#a8452b', '#913a24', '#853522', '#783020', '#5f281c', '#46211a']},
+        marker: {colors: ['#ba5536', '#853522', '#53251b']},
     };
     
     var layout_pie13 = {
-        title: 'Ever smoke 100 cigarettes',
+        title: 'Ever smoked 100 cigarettes',
         titlefont: {color: '#003b46'},
         height: 300,
         width: 400,
