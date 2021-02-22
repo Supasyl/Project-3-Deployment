@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- Plot.ly -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <!-- font awesome -->
+        <script src="https://kit.fontawesome.com/531608a13f.js" crossorigin="anonymous"></script>
         <!-- Our CSS -->
         <link rel="stylesheet" type="text/css" href="../static/css/style.css">
         <!-- Title (shown in browser tab)-->
@@ -201,7 +203,7 @@
                         <input type='text' class='form-control' id='Smoke' placeholder='' readonly></input>
                         <label for='Alcohol'>Estimate number of days you will drink an alcoholic beverage in the next 30 days:</label>
                         <input type='text' class='form-control' id='Alcohol' placeholder='' readonly></input>
-                        <label for='Mental'>The estimated chance you have a serious mental illness in %:</label>
+                        <label for='Mental'>The probability you have a serious mental illness:</label>
                         <input type='text' class='form-control' id='Mental' placeholder='' readonly></input>
                         <label for='Drugs'>How likely are you to use the following substances in your lifetime:</label>
                         <input type='text' class='form-control' id='Marijuana' placeholder='Marijuana/ Hashish' readonly></input><br>
@@ -219,11 +221,27 @@
                         <small id='' class='form-text' text-muted>Inhalants include Amyl, Nitrate, 'Poppers, Rush, Correction fluid, Degreaser, Gasoline, Lighter fluid, Glue, Shoe polish, Toluene, Halothane, Ether, Lacquer thinner, Paint solvent, Butane, Propane, Nitrous oxide, 'Whippets', Felt-tip markers, Spray paint, Aerosol sprays</small><br>
                     </div>
                 </form>
+                <div class='card' id='Privacy'>
+                    <h3 class='text-center'>Privacy</h3>
+                    <p class='card-text'>
+                        We respect your privacy. This website does not save your information anywhere. Once you reload or reset the page the information is gone.<br>
+                        We do sent your information to a function that does the prediction calculation. It is sent using a packed json file, so no information is sent 'out in the open'.
+                        To ensure you have complete privacy, we recommend:
+                        <ul class='fa-ul'>
+                            <li>
+                                <span class='fa-li'>
+                                <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                                Chrome: Select 'new incognito window' from the 3 dot menu in the top left corner.
+                            </li>
+                            <li>
+                                <span class='fa-li'>
+                                <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                                Safari: Select 'new private window' from the file menu or use Shift + Command + N.
+                            </li>
+                        </ul>
+                    </p>
+                </div>
             </div>
-            
-                    
-              
-           
         </div>
     </div>
     <!-- footer -->

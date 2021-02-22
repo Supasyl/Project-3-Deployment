@@ -55,6 +55,14 @@ h3 {
     background-color: #66a5ad;
 }
 
+.under {
+    font-size: 30pt;
+    text-align: center;
+    color: #003b46;
+    background-color: #66a5ad;
+    margin-top: 15px !important;
+}
+
 h4 {
     color: #003b46;
 }
@@ -82,6 +90,17 @@ a {
 
 .card {
     background-color: #C4DFE6;
+    border-color: chocolate;
+    border-width: 2px;
+}
+
+.card-text {
+    margin-left: 10px !important;
+    margin-right: 10px important !important;
+}
+
+li {
+    color: #003b46;
 }
 
 .card-header {
@@ -91,6 +110,10 @@ a {
     background-color: #66a5ad;
 }
 
+svg{
+    background-color: '#C4DFE6' !important;
+    background: '#C4DFE6' !important;
+}
 aside {
     color: #003b46;
     font-size: 10px;
