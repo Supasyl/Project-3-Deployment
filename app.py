@@ -130,7 +130,7 @@ def send():
 #         return jsonify(alcohol_result), 200 # return success 
 #     return 'To use the survey, please answer all questions.'
 
-@app.route("/index")
+@app.route("/")
 def index():
     return render_template('index.html')
 
