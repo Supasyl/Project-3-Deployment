@@ -24,6 +24,17 @@ body {
     padding-left: 10pt;
 }
 
+
+
+.main-svg {
+    background-color: transparent !important;
+}
+
+/* .legend {
+    background-color: transparent !important;
+} */
+
+
 .nav-link {
     color: #C4DFE6 !important;
 }
@@ -96,7 +107,7 @@ a {
 
 .card-text {
     margin-left: 10px !important;
-    margin-right: 10px important !important;
+    margin-right: 10px !important;
 }
 
 li {
@@ -114,6 +125,7 @@ svg{
     background-color: '#C4DFE6' !important;
     background: '#C4DFE6' !important;
 }
+
 aside {
     color: #003b46;
     font-size: 10px;

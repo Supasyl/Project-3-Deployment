@@ -17,16 +17,16 @@ function init() {
         title: 'Age',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_age', [pie1], layout_pie1);
@@ -47,16 +47,16 @@ function init() {
         title: 'Marital status',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_mar', [pie2], layout_pie2);
@@ -76,16 +76,16 @@ function init() {
         title: 'Overall Health',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_health', [pie3], layout_pie3);
@@ -105,16 +105,16 @@ function init() {
         title: 'Times moved<br>in the past 12 months',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_move', [pie4], layout_pie4);
@@ -133,16 +133,16 @@ function init() {
         title: 'Sexual attraction',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_attr', [pie5], layout_pie5);
@@ -161,17 +161,17 @@ function init() {
         title: 'Sexual identity',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_ident', [pie6], layout_pie6);    
@@ -191,17 +191,17 @@ function init() {
         title: 'Serious difficulty concentrating,<br>remebering, making decisions',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_diff', [pie7], layout_pie7);   
@@ -228,10 +228,10 @@ function init() {
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_edu', [pie8], layout_pie8);   
@@ -258,10 +258,10 @@ function init() {
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_work', [pie9], layout_pie9);   
@@ -281,17 +281,17 @@ function init() {
         title: 'How many employers<br>in the past 12 months',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_empl', [pie10], layout_pie10);   
@@ -311,17 +311,17 @@ function init() {
         title: 'Employment status',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_stat', [pie11], layout_pie11);   
@@ -341,17 +341,17 @@ function init() {
         title: 'Income',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
     Plotly.newPlot('pie_income', [pie12], layout_pie12);   
@@ -371,22 +371,82 @@ function init() {
         title: 'Ever smoked 100 cigarettes',
         titlefont: {color: '#003b46'},
         height: 300,
-        width: 400,
+        width: 390,
         legend: {
             title: '',
             titlefont: {color: '#003b46'},
             bordercolor: '#003b46',
             tickfont: {color: '#003b46'},
             font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
         color: '#C4DFE6',
-        },
     };
 
-    Plotly.newPlot('pie_income', [pie13], layout_pie13);   
+    Plotly.newPlot('pie_smoke', [pie13], layout_pie13);   
 
-    // var colorscale = ['#ba5536', '#b24c30', '#a8452b', '#9c3f27', '#913a24', '#853522', '#783020', '#6c2c1e', '#5f281c', '#53251b', '#46211a'];
+
+     /////////////////////////////////////////////////////////////
+    // SMOKED_AGE
+    var pie14 = {
+        values: [12, 2, 9, 40, 133, 174, 246, 541, 522, 1218, 1073, 4196, 4091, 5235, 7044, 8158, 5277, 8588, 3649, 3210, 2261, 1209, 613, 432, 707, 182, 141, 169, 49, 192, 22, 34, 30, 24, 67, 15, 11, 21, 6, 34, 2, 3, 5, 2, 7, 2, 4, 4, 1, 2, 60874],
+        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 'Never smoked'],
+        type: 'pie',
+        name: 'SMOKED_AGE',
+        marker: {colors: ['#ba5536', '#b95335', '#b75133', '#b55032', '#b34e31', '#b24c30', '#b04b2f', '#ae492e', '#ac482d', '#aa472c', '#a8452b', '#a5442a', '#a34329', '#a14129', '#9f4028', '#9c3f27', '#9a3e26', '#983d26', '#963c25', '#933b25', '#913a24', '#8e3924', '#8c3823', '#8a3723', '#873622', '#853522', '#823421', '#803321', '#7d3220', '#7b3120', '#783020', '#762f1f', '#732f1f', '#712e1f', '#6e2d1e', '#6c2c1e', '#692b1e', '#672b1d', '#642a1d', '#62291d', '#5f281c', '#5d281c', '#5a271c', '#58261c', '#55251b', '#53251b', '#50241b', '#4e231b', '#4b221a', '#49221a', '#46211a']},
+    };
+    
+    var layout_pie14 = {
+        title: 'Age first smoked a cigarette',
+        titlefont: {color: '#003b46'},
+        height: 1580,
+        width: 390,
+        legend: {
+            title: '',
+            titlefont: {color: '#003b46'},
+            bordercolor: '#003b46',
+            tickfont: {color: '#003b46'},
+            font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
+        paper_bgcolor: '#C4DFE6',
+        plot_bgcolor: '#C4DFE6',
+        color: '#C4DFE6',
+    };
+
+    Plotly.newPlot('pie_smokeage', [pie14], layout_pie14);   
+
+
+     /////////////////////////////////////////////////////////////
+    // ALCOHOL_30_DAYS
+    var pie15 = {
+        values: [12, 2, 9, 40, 133, 174, 246, 541, 522, 1218, 1073, 4196, 4091, 5235, 7044, 8158, 5277, 8588, 3649, 3210, 2261, 1209, 2613, 432, 707, 182, 141, 169, 49, 3192, 22, 34, 30, 24, 67, 15, 11, 21, 6, 34, 2, 3, 5, 2, 7, 2, 4, 4, 1, 2, 60874],
+        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 'Never'],
+        type: 'pie',
+        name: 'ALCOHOL_30_DAYS',
+        marker: {colors: ['#ba5536', '#b95335', '#b75133', '#b55032', '#b34e31', '#b24c30', '#b04b2f', '#ae492e', '#ac482d', '#aa472c', '#a8452b', '#a5442a', '#a34329', '#a14129', '#9f4028', '#9c3f27', '#9a3e26', '#983d26', '#963c25', '#933b25', '#913a24', '#8e3924', '#8c3823', '#8a3723', '#873622', '#853522', '#823421', '#803321', '#7d3220', '#7b3120', '#783020', '#762f1f', '#732f1f', '#712e1f', '#6e2d1e', '#6c2c1e', '#692b1e', '#672b1d', '#642a1d', '#62291d', '#5f281c', '#5d281c', '#5a271c', '#58261c', '#55251b', '#53251b', '#50241b', '#4e231b', '#4b221a', '#49221a', '#46211a']},
+    };
+    
+    var layout_pie15 = {
+        title: '# of alcoholic drinks on each day you drink<br>in past 30 days',
+        titlefont: {color: '#003b46'},
+        height: 1580,
+        width: 390,
+        legend: {
+            title: '',
+            titlefont: {color: '#003b46'},
+            bordercolor: '#003b46',
+            borderwidth: 1,
+            tickfont: {color: '#003b46'},
+            font: {color: '#003b46'},
+            bgcolor: '#C4DFE6'},
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: '#C4DFE6',
+        color: '#C4DFE6',
+    };
+
+    Plotly.newPlot('pie_alc', [pie15], layout_pie15);   
+
 };
 
 init();

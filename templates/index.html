@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index">Intro</a>
+                    <a class="nav-link" href="index">Introduction</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="survey">Survey</a>
@@ -36,7 +36,7 @@
                     <a class="nav-link" href="help">Where do I get help?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="data">Raw data</a>
+                    <a class="nav-link" href="data">Data</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://supasyl.github.io/">About</a>
@@ -49,21 +49,23 @@
     <div class="container-fluid">
         <!-- header -->
         <div class='row'>
-            <div class='col-12'> 
+            <div class='col-lg-12'> 
                 <h1>How do we predict your future?</h1>
                 <h2>OR go straight to the survey <a class='btn btn-primary' role='button' href='survey'>Survey</a></h2>
             </div>
         </div>
         <!-- general info -->
         <div class='row'>
-            <div class='col-12'> 
+            <div class='col-lg-12'> 
                 <p>The calculation for the prediction is based on the information shown in the plots below.</p>
             </div>
         </div>
         <!-- smoking plot & info -->
         <div class='row'>
-            <div class='col-lg-6 card'>
-                <div id='smoking_age_plot'></div>
+            <div class='col-lg-6'>
+                <div class='card'>
+                    <div id='smoking_age_plot'></div>
+                </div>
             </div>        
             <div class="col-lg-6">
                     <h3 class='text-center'>Smoking</h3>
@@ -76,14 +78,18 @@
                     <h3 class='under text-center'>Alcohol</h3>
                     <p class='text-right'>text</p>
             </div>
-            <div class='col-lg-6 card'>
-                <div id='alcohol_age_plot'></div>
+            <div class='col-lg-6'>
+                <div class='card under'>
+                    <div id='alcohol_age_plot'></div>
+                </div>
             </div>        
         </div>
         <!-- Mental health plot & info -->
         <div class='row'>
-            <div class='col-lg-6 card'>
-                <div id='mh_age_plot'></div>
+            <div class='col-lg-6'>
+                <div class='card under'>
+                    <div id='mh_age_plot'></div>
+                </div>
             </div>        
             <div class="col-lg-6">
                     <h3 class='under text-center'>Mental health</h3>
@@ -93,11 +99,13 @@
         <!-- drugs plot & info -->
         <div class='row'>
             <div class="col-lg-6">
-                    <h3 class='text-center'>Drug use</h3>
+                    <h3 class='under text-center'>Drug use</h3>
                     <p class='text-right'>text</p>
             </div>
-            <div class='col-lg-6 card'>
-                <div id='drug_use_plot'></div>
+            <div class='col-lg-6'>
+                <div class='card under'>
+                    <div id='drug_use_plot'></div>
+                </div>
             </div>        
         </div>
     </div>
