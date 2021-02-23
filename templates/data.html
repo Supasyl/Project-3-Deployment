@@ -8,8 +8,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- Plot.ly -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <!-- Load d3.js -->
-        <script src="https://d3js.org/d3.v5.js"></script> 
         <!-- Our CSS -->
         <link rel="stylesheet" type="text/css" href="../static/css/style.css">
         <!-- Title (shown in browser tab)-->
@@ -38,6 +36,9 @@
               <a class="nav-link" href="help">Where do I get help?</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="analytics">Analytics</a>
+        </li>
+          <li class="nav-item">
               <a class="nav-link" href="data">Data</a>
           </li>
           <li class="nav-item">
@@ -60,7 +61,7 @@
             <h3>Origin of the raw data </h3>
             <p>The original data for this survey was sourced from the archive of Substance Abuse & Mental Health Data Archive from the U.S. Department of Health & Human Services.<br> 
                 The National Survey on Drug Use and Health (NSDUH) series, is a major source of statistical information on the use of illicit drugs, alcohol, and tobacco and on mental health issues among members of the U.S. civilian, non-institutional population aged 12 or older. The survey tracks trends in specific substance use and mental illness measures and assesses the consequences of these conditions by examining mental and/or substance use disorders and treatment for these disorders.<br>
-                All the information and additional details are available from their website <a href=“https://www.datafiles.samhsa.gov/study-series/national-survey-drug-use-and-health-nsduh-nid13517” target='_blank'>HERE</a>.
+                The survey and all the information about this survey including all the historical data and additional details are available from their website <a href=https://www.datafiles.samhsa.gov/study-series/national-survey-drug-use-and-health-nsduh-nid13517 target='_blank'>HERE</a>.
             </p>
         </div>
       </div>
@@ -68,7 +69,7 @@
       <div class='row'>
         <div class='col-lg-12'>
           <h3 class='text-center'>Pie chart of each category used for the predications</h3>
-          <p>text</p>
+          <p>These charts show all categories with the options that were given to the subjects that were part of the survey. Each pie-piece shows the percentage of all people that chose that answer. As an example, under Marital status is shows 70.4% of the people were married at the time of the survey.</p>
         </div>
       </div>
       <div class='row'>
@@ -145,20 +146,6 @@
         <div class='col-lg-4'>
           <div class='card under'>
             <div id='pie_alc'></div>
-          </div>
-        </div>
-      </div>
-      <!-- correlation diagram -->
-      <div class='row'>
-        <div class='col-lg-12'>
-          <h3 class='under text-center'>Correlation diagram</h3>
-          <p>text</p>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col-lg-12'>
-          <div class='card'>
-            <div id='correlation'><img src='../static/images/sns_correlation_plot.png', alt='correlation diagram'></div>
           </div>
         </div>
       </div>
@@ -1768,7 +1755,9 @@
         <p class='bottom'>Addiction & Mental Health - Data</p>
     </footer> 
 
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v5.js"></script> 
+<!-- Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- Our JS -->

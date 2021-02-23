@@ -108,6 +108,10 @@ def survey():
 def help():
     return render_template('help.html')
 
+@app.route("/analytics")
+def analytics():
+    return render_template('analytics.html')
+
 @app.route("/data")
 def data():
     return render_template('data.html')

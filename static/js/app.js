@@ -304,7 +304,7 @@ function Prediction() {
         inhalantsPredict.property('value', inhOutput);
     });
 
-    // // additional prediction model
+    // // additional prediction model - currently overriding error
     // d3.json("/api/alcohol_model", {
     //     method:"POST",
     //     body: JSON.stringify(input_fields),
@@ -324,8 +324,7 @@ function Prediction() {
 
 function redirect() {
 	// prevent enter from refreshing the page
-	d3.event.preventDefault();
-    d3.json("/index");
+    window.location.reload(true);
 };
 
 

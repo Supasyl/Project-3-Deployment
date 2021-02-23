@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+        <!-- required meta tags -->
+        <meta charset="UTF-8">
+        <!-- Bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Plot.ly -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <!-- font awesome -->
+        <script src="https://kit.fontawesome.com/531608a13f.js" crossorigin="anonymous"></script>
+        <!-- Our CSS -->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <!-- Title (shown in browser tab)-->
+        <title>Addiction & Mental Health</title>
+        <!-- Insert icon with title in browser tab -->
+        <link rel="shortcut icon" type="image/x-icon" href="../static\images\drug-addiction.png"> 
+  </head>
+
+  <body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+        <a class="navbar-brand">Addiction & Mental Health</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index">Introduction</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="survey">Survey</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="help">Where do I get help?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="analytics">Analytics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="data">Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <!-- header -->
+        <div class='row'>
+            <div class='col-lg-12'> 
+                <h1>Analytics</h1>
+            </div>
+        </div>
+        <!-- Core message & Motivation -->
+        <div class='row'>
+            <div class='col-12'>
+                <h3>Core message & Motivation</h3>
+                <p>Addiction and mental health are still taboo subjects in Australia. I hope to make it more approachable and up for discussion by bringing it to people’s attention.
+                    Even though alcohol is not considered an illegal substance, it has a big impact on Australians. It is part of the culture and socialising. I hope to provide more openness about what addiction is including alcoholism.<br> 
+                    I thought it would be interesting to find out how much of our demographics is the cause for an addiction or mental health disorder.<br>
+                    To get people involved in the subject, it is not enough to just talk about it. There is plenty of easily available information out there, it is the ability to recognise it and the will to take time out of your life to check it out. And most people are too busy to realise it or are in denial. It is easier not to accept it, than to confront it.<br>
+                    (Most) People love talking about themselves, so I wanted to make this a proper interaction. What better way than to provide a short survey and make a prediction on their substance use and mental health state. 
+                    This way, it will be an easier topic to talk about. Like, “have you seen that website with these (accurate or ridiculous, etc) predictions about me?”<br>
+                    These are the predictions I want to provide:
+                    <ul class='fa-ul'>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Estimate days to smoke cigarettes in the next 30 days.
+                        </li>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Estimate days to drink alcoholic beverages in the next 30 days.
+                        </li>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            How likely have you, or are you going to, use the following substances: Marijuana/ Hashish, Cocaine, Crack, Heroin, Hallucinogens, Inhalants, Methamphetamines, Pain relievers, Tranquilizers, Stimulants, Sedatives.
+                        </li>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            If you have a probable mental illness or not.
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <!-- Data collection & cleaning -->
+        <div class='row'>
+            <div class='col-12'>
+                <h3 class='under text-center'>Data collection & cleaning</h3>
+                <p>Searching for data was easy. Finding publicly available data was not. 
+                    In Australia the only information about health that is publicly available is statistical information. Since I needed the raw data to apply machine learning, I could not use this. Fortunately, in the US they are not as protective of their health data. The limitation is that the machine learning is based on behaviour of people in the US. In Australia, we may, or may not, behave the same way.<br>
+                    The data I found is a very long survey (about 2,000 questions), the ‘National Survey on Drug Use and Health (NSDUH)’. This survey has been taken since 1979. I have used 2015 to 2019 as the basis for the machine learning. The raw datasets have over 56,000 rows of data with over 2,500 categories for each year which totals at over 280,000 rows.<br>
+                </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Removing all rows with an error message.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Removing all individuals aged under 18.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Extracting the columns needed for this project. You can find information about every category on the Data page.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Removing answers that did not provide information to help the machine learning function in finding a probability, like ‘refused to answer’, ‘legitimate skip’ or ‘no response’.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Replacing some binary codes with other binary codes to get consistent data. For example, adding the 'no response' numbers to the 'skip' numbers, and some logically assigned data based on other information streams.
+                    </li>
+                </ul>
+                <p>
+                    The cleaned dataset has 120,543 rows of data in 64 categories.
+                </p>
+            </div>
+        </div>
+        <!-- Machine learnin -->
+        <div class='row'>
+            <div class='col-lg-12'> 
+                <h3 under>Machine learning</h3>
+                <p>The machine learning models that work with categorical data are: </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Logistic regression (using Scikit and GridSearchCV in Visual Studio Code)
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Random Forest (using Scikit and GridSearchCV in Visual Studio Code)
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Sequential (deep learning using Scikit, Tensorflow and Keras in Visual Studio Code)
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Naïve Bayes (deep learning using pySpark in Docker)
+                    </li>
+                </ul>
+                <p>It is important to find a balance between getting a prediction of 100% accuracy and the information required to achieve that result. Especially since I want people to do the survey and talk about it amongst family and friends. It is no use if people look at the survey and click away because it is way too long.<br>
+                    To get an idea on how much data I needed for the machine learning models to be as accurate as possible without needing the life history of the person completing my survey, I started with all the categories and worked my way down.
+                </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        The initial prediction is based on all 63 categories with category 64 as the y-value.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        The second prediction is based on all demographic categories and the selected categories related to the prediction.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        The third prediction is based on only the demographic categories.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        The fourth prediction is based on the most important demographic categories and the single most important related category. I added this prediction because initially doing the prediction with only the demographic information was not very accurate. As I was still in the initial phase I didn't save my result as I should have. Since I am adding categories I will also check if some categories have a very low impact on the prediction so I can maby remove some of them to balance out the amount of questions in the survey.
+                    </li>
+                </ul>
+                <p>This dataset already came with binary encoding. Because the fitting of the data to the model didn’t work as it was too large, I realised I had to encode the data further. Some binary codes were in the 90’s or even 900’s. An example is 85 and 985 represent bad data. Once this was completed, there was no more issue.<br>
+                    This project has a timeframe of 2 weeks. I had to manage my time well and didn’t have time to run all models considering the number of models required for this project. I chose to start with the Logistic Regression and Random Forest models.<br>
+                    It did take 1h20 to complete the fitting and predication of the largest dataset to both models including using the parameter optimiser GridSearchCV.
+                </p>
+            </div>
+        </div>
+        <!-- model s-->
+        <div class='row'>
+            <div class="col-lg-6">
+                <h3 class='under text-center'>Logistic Regression model</h3>
+                <p>I chose to start with the logistic regression because it is the benchmark model. It is the most common model as the logic behind it is explained more easily than the other available models. It uses an equation (logarithmic transformation) on the outcome variable which allows us to model a non-linear association in a linear way. The key values are binary values rather than a numeric value. The binary value represents a categorical outcome. An example is a question with a yes or no response. These values will be represented as 0 and 1 to calculate the probability of each outcome based on other variables.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <h3 class='under text-center'>Random Forest model</h3>
+                <p>As my dataset consists of a lot of classifications, it is important to know which ones contribute most to the prediction. This is important because even tough people want to talk about themselves and be involved, they don’t want to spend hours answering questions. This is why I chose the Random Forest model as the second model to ensure I can ask the least number of questions to get the most accurate prediction.</p>
+            </div>
+        </div>
+        <!-- Prediction categories -->
+        <div class='row'>
+            <div class='col-12'>
+                <h3 class='under text-center'>Prediction categories</h3>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-lg-6">
+                <h3 class='under text-center'>Smoking</h3>
+                <p> This is to accurately predict the estimated number of days that the subject will smoke cigarettes in the next 30 days.<br><br>
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <h3 class='under text-center'>Alcohol</h3>
+                <p>This is to accurately predict the estimated number of days that the subject will drink an alcoholic beverage in the next 30 days.<br><br>
+
+                </p>
+                <div class='card'>
+                    <div><img id='seq_alc' src='../static/images/Sequential.png', alt='sequential outcome table alcohol'></div>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-lg-6">
+                <h3 class='under text-center'>Substances</h3>
+                <p> This is to accurately predict how likely it is that the subject will use any of these substances in their lifetime.<br><br>
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <h3 class='under text-center'>Mental health</h3>
+                <p>This is to accurately predict how likely it is that the subject has a probable serious mental illness.<br><br>
+                    
+                </p>
+            </div>
+        </div>
+        <!-- Conclusion -->
+        <div class='row'>
+            <div class='col-12'>
+                <h3 class='under text-center'>Conclusion</h3>
+                <p>text</p>
+            </div>
+        </div>
+        <!-- correlation diagram -->
+        <div class='row'>
+            <div class='col-lg-12'>
+            <h3 class='under text-center'>Correlation diagram</h3>
+            <p>This diagram shows the correlation between categories. As you can see, there are only 3 categories that have a strong relation with another category. The correlation with 1.00 (100%) is of the age of people to smoke their first cigarette and if they smoked at least 100 cigarettes in their lifetime. Have a look and see what other relationships you can find.</p>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-12'>
+            <div class='card'>
+                <div><img id='correlation' src='../static/images/sns_correlation_plot.png', alt='correlation diagram'></div>
+            </div>
+            </div>
+        </div>
+        <!-- Summery table prediction outcomes – Initial predications -->
+        <div class='row'>
+            <div class='col-lg-12'>
+            <h3 class='under text-center'>Summery table prediction outcomes – Initial predications</h3>
+            <p>text</p>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-12'>
+            <div class='card'>
+                <div><img id='pred_init' src='../static/images/prediction_outcomes_initial.png', alt='initial prediction outcome table'></div>
+            </div>
+            </div>
+        </div>
+        <!-- cSummery table prediction outcomes – Final predications -->
+        <div class='row'>
+            <div class='col-lg-12'>
+            <h3 class='under text-center'>Summery table prediction outcomes – Final predications</h3>
+            <p>text</p>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-12'>
+            <div class='card'>
+                <div><img id='pred_final' src='../static/images/prediction_outcomes_final.png', alt='final prediction outcome table'></div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class='footer'>
+        <p class='bottom'>Addiction & Mental Health - Analytics</p>
+    </footer> 
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v5.js"></script> 
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Our JS -->
+<!-- <script type="text/javascript" src="static/js/app.js"></script> -->
+
+</body>
+</html>

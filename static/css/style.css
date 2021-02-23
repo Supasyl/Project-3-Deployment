@@ -24,11 +24,6 @@ body {
     padding-left: 10pt;
 }
 
-/* svg{
-    background-color: '#C4DFE6' !important;
-    background: '#C4DFE6' !important;
-} */
-
 .main-svg {
     background-color: transparent !important;
 }
@@ -103,13 +98,29 @@ a {
     border-width: 2px;
 }
 
+
 .card-text {
     margin-left: 10px !important;
     margin-right: 10px !important;
+    color: #003b46;
+    font-size: 1rem ;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+ul {
+    text-align: left !important;
 }
 
 li {
     color: #003b46;
+    font-size: 1rem ;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
 }
 
 .card-header {
@@ -119,10 +130,12 @@ li {
     background-color: #66a5ad;
 }
 
-img {
+#correlation {
     background-color: transparent !important;
-    height: 700px;
-    margin-bottom: 20px;
+}
+
+#seq_alc {
+    width: 100 !important;
 }
 
 aside {
