@@ -50,10 +50,6 @@ HALL_MODEL = joblib.load('Predictions/Drugs_LogRegr_final_hall.smd')
 INHALENTS_MODEL = joblib.load('Predictions/Drugs_LogRegr_final_inhalants.smd')
 
 
-
-
-
-
 # receiving the json file from the app.js
 @app.route("/api/prediction_models", methods=["GET", "POST"])
 def send():
@@ -99,36 +95,6 @@ def send():
                 her_prediction, meth_prediction, pnr_prediction, trk_prediction, stm_prediction, sed_prediction, hal_prediction, inh_prediction), 200 # return success 
     return 'To use the survey, please answer all questions.' # message to input info/ usage information
 
-# # receiving the json file from the app.js
-# @app.route("/api/additional_model", methods=["GET", "POST"])
-# def send():
-#     if request.method == "POST":
-#         if not request.json: 
-#             abort(400)
-
-#         print(f"JSON content: {request.json}")
-#         myInputs = {
-#             'AGE2': request.json['AGE2'],
-#             'IRMARIT': request.json['IRMARIT'],
-#             'HEALTH': request.json['HEALTH'],
-#             'MOVSINPYR2': request.json['MOVSINPYR2'],
-#             'SEXATRACT': request.json['SEXATRACT'],
-#             'SEXIDENT': request.json['SEXIDENT'],
-#             'DIFFTHINK': request.json['DIFFTHINK'],
-#             'IREDUHIGHST2': request.json['IREDUHIGHST2'],
-#             'WRKSTATWK2': request.json['WRKSTATWK2'],
-#             'IRWRKSTAT': request.json['IRWRKSTAT'],
-#             'WRKNUMJOB2': request.json['WRKNUMJOB2'],
-#             'IRPINC3': request.json['IRPINC3'],
-#             'CIG100LF': request.json['CIG100LF'],
-#             'ALCUS30D': request.json['ALCUS30D'],
-#             'CIGTRY': request.json['CIGTRY']
-#         }
-#         X_new = np.fromiter(myInputs.values(), dtype=float) 
-#         # Generate prediction for a single value
-#         alcohol_result = {'alcohol_prediction': str(ALCOHOL_MODEL.predict([X_new])[0])}
-#         return jsonify(alcohol_result), 200 # return success 
-#     return 'To use the survey, please answer all questions.'
 
 @app.route("/")
 def index():
