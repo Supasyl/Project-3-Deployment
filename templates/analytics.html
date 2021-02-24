@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index">Introduction</a>
+                    <a class="nav-link" href="/">Introduction</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="survey">Survey</a>
@@ -207,36 +207,245 @@
         <!-- Prediction categories -->
         <div class='row'>
             <div class='col-12'>
-                <h3 class='under text-center'>Prediction categories</h3>
+                <h1 class='under text-center'>Prediction categories</h1>
             </div>
         </div>
         <div class='row'>
             <div class="col-lg-6">
                 <h3 class='under text-center'>Smoking</h3>
                 <p> This is to accurately predict the estimated number of days that the subject will smoke cigarettes in the next 30 days.<br><br>
+                    <i>Initial prediction</i><br>
+                    The initial prediction based on the 63 categories is almost 100% (0.999) for both models and there is no difference if the classifications have been optimised or not.<br><br>
+                    <i>Second prediction</i><br>
+                    The second prediction based on 20 categories is just as accurate at almost 100% (0.999) for both models and again there is no difference if the classifications have been optimised or not.<br>
+                    The category that influences the prediction the most is ‘CIG100LF’, which is if they have smoked 100 cigarettes in their life. This category will be added to the questions to the subject. As such I will also use it in the predications of the models for the other predications (alcohol, drug and mental health).<br><br>
+                    <i>Third prediction</i><br>
+                    The accuracy of the third prediction based on 16 categories is a lot less. This is to be expected as there is no information about any smoking habit from the subject.<br>
+                    The initial R2 value in the Logistic Regression model is 0.601 for the training data and 0.596 for the test data. The exact same score is achieved after optimising the classifications. The values are very close, so the model is successful.<br>
+                    The outcome of the prediction of the Random Forest model is not as good as the Logistic regression model. The R2 for the training data is 0.796 but the R2 for the test data is 0.578 which is not very close together. This means the prediction is not going to be very accurate. After optimising the parameters, the outcome is nearly the same as the initial model.<br><br>
+                    The demographic categories that had the least amount of influence on the predication (&lt;0.02) and may be removed depending on the outcome of the other predications are:<br>
                 </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.003559328298874442, 'DIFFDRESS', serious difficulty dressing or bathing
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.011260526233340732, 'DIFFWALK', serious difficulty walking or climbing stairs
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.011853741454514339, 'DIFFERAND', difficulty doing errrands alone
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.012038787040043929, 'SERVICE', ever been in the armed forces
+                    </li>
+                </ul>
             </div>
             <div class="col-lg-6">
                 <h3 class='under text-center'>Alcohol</h3>
                 <p>This is to accurately predict the estimated number of days that the subject will drink an alcoholic beverage in the next 30 days.<br><br>
-
+                    For the smoking predication there was a question in the survey about estimated smokes per 30 days using groups. This option is also available for drinks but more than 50% skipped the question making the dataset significantly smaller. That is why I decided not to use the same category.<br><br>
+                    <i>Initial prediction</i><br>
+                    As expected, due to the number of available options (30), the prediction value is quite low at approximately 0.54. I didn’t expect it to be this low though due to still having 4 other alcohol related categories.<br><br> 
+                    The random Forest model has a very high R2 value for the training data but the same low value for the test data. This indicates that the model is not working well.<br>
+                    <i>Second prediction</i><br>
+                    The second prediction has almost the same values as the first prediction, including the high difference in training and test data by Random Forest.<br><br>
+                    The category that influences the prediction the most is ‘ALCUS30D, which is the number of alcoholic drinks each day that you had a drink in the last 30 days. This category will be added to the questions to the subject. As such I will also use it in the predications of the models for the other predications (drug and mental health).<br><br>
+                    <i>Third prediction</i><br>
+                    As expected, the Logistic regression prediction value is even less at 0.37. The Random Forest predication for the training data is significantly more than the test data which we have seen before for this model.<br><br>
+                    The feature importance is showing that there are 7 categories under 0.02. To keep it consistent with the predication for smoking, the bottom 4 categories are:
                 </p>
-                <div class='card'>
-                    <div><img id='seq_alc' src='../static/images/Sequential.png', alt='sequential outcome table alcohol'></div>
-                </div>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.0011064271469488575, 'DIFFDRESS', serious difficulty dressing or bathing
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.003918203159664558, 'DIFFWALK', serious difficulty walking or climbing stairs
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.004167867517782593, 'DIFFERAND', difficulty doing errrands alone
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.010210052727015927, 'SERVICE', ever been in the armed forces
+                    </li>
+                </ul>
+                <p>Because the prediction value was so low, I did some additional modelling using Sequential for this category. As you can see in the table below, the outcomes are the same no matter what model I used.</p>
             </div>
         </div>
         <div class='row'>
             <div class="col-lg-6">
                 <h3 class='under text-center'>Substances</h3>
                 <p> This is to accurately predict how likely it is that the subject will use any of these substances in their lifetime.<br><br>
+                    Before predicting the likelihood of substance use, I changed the dataframe slightly. I had to summarise some of the substance categories into one category as they were of the same type of substance (hallucinogens (10 types) and inhalants (13 types)).<br><br>
+                    <i>Initial prediction</i><br>
+                    As there are so many substances to make predictions for, I am using an excerpt for the proof-of-concept prediction. I’m using one of the groups and two other substances. That way I can see if the prediction is consistent or totally different. I have randomly chosen to start with Marijuana, Cocaine and Inhalants.<br><br>
+                    In all 3 predictions the category ‘CIGTRY’, which is the age when they first smoked a cigarette, is in the top 2 of feature importance. I will add this category to the questions of the survey, and it will be added to the mental health prediction.<br><br>
+                    <i>Second prediction</i><br>
+                    The predictions for the 3 drug types vary by about 20%. For two of the drug types the difference of the prediction between the first and second dataset is negligible. For one drug type the difference is quite significant from a 100% accuracy to a 72% accuracy.<br><br>
+                    The feature importance is almost identical for all 3 drug types. I will use these predictions without running all the drug types.<br><br>
+                    For cocaine and marijuana these are the bottom 4 categories:
                 </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFDRESS', serious difficulty dressing or bathing
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFERAND’, difficulty doing errrands alone
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFWALK', serious difficulty walking or climbing stairs
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        ‘SEXIDENT’, sexual identity
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        ‘SERVICE’ - at no 6 from the bottom, still under 0.02
+                    </li>
+                </ul>
+                <p>For inhalants the bottom 4 categories are:</p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFDRESS', serious difficulty dressing or bathing
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFWALK’, serious difficulty walking or climbing stairs
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFERAND’, difficulty doing errrands alone
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFTHINK’ - very high with mental health so it cannot be removed
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        ‘SEXIDENT’ - at no 5 from the bottom with a value still under 0.02
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        ‘SERVICE’ - at no 6 from the bottom with a value still under 0.02
+                    </li>
+                </ul>
             </div>
             <div class="col-lg-6">
                 <h3 class='under text-center'>Mental health</h3>
                 <p>This is to accurately predict how likely it is that the subject has a probable serious mental illness.<br><br>
-                    
+                    Before predicting the likely mental illness, I calculated the total of the 6 mental health category outcomes in order to predict the final total result.
+                    While creating the new category I already encoded the outcome as a binary code of 0 and 1, so there is no need to encode these values any further.<br><br>
+                    <i>Initial prediction</i><br>
+                    The prediction value for the Logistic Regression is very high at just above 0.92.<br>
+                    The Random Forest predication again has some difference between the training and test data. Not as much though staying within 0.1.<br><br>
+                    The category that influences the prediction the most is ‘ALCYRTOT, which is the total number of days alcohol was used in the past 12 months. I am not adding this category to the questions as it is a big guess for a quick survey.<br><br>
+                    <i>Second prediction</i><br>
+                    As there are no other mental health categories, this prediction is similar to the third prediction of the smoking and alcohol predictions. The prediction is performed on all demographic categories with the addition of the most important smoking and alcohol categories.<br>
+                    The outcome of this prediction is almost as high as the initial prediction at 0.92 for the training data and 0.919 for the test data. This also indicates that the accuracy is not really affected by the lack of the category that most influences the outcome in the first prediction.<br><br>
+                    The demographic categories that had the least amount of influence on the predication (&lt;0.02) and may be removed depending on the outcome of the other predications are:
                 </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.004089621921158707, 'DIFFDRESS', serious difficulty dressing or bathing
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.00877968472434257, 'DIFFWALK', serious difficulty walking or climbing stairs
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.009145889493849356, 'SERVICE', ever been in the armed forces
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        0.01925657313909633, 'SEXIDENT', sexual identity
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- final categories -->
+        <div class='row'>
+            <div class='col-12'>
+                <h3 class='under text-center'>Final categories</h3>
+                <p>To get a balanced outcome of the predictions, the following questions will be added to the survey:</p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Have you smoked at least 100 cigarettes in your lifetime?
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        What age were you when you first smoked a cigarette?
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        In the last 30 days, on days you had an alcoholic beverage, how many drinks did you have?
+                    </li>
+                </ul>
+                <p>Some categories did not contribute much to the outcome of the prediction. As it appears that some of the categories are not important for any of the predications I’m trying to make with this study.
+                    To balance out the number of questions to ask in the survey, the following categories will be removed:
+                </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFDRESS', serious difficulty dressing or bathing
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFWALK', serious difficulty walking or climbing stairs
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'SERVICE', ever been in the armed forces
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        'DIFFERAND’, difficulty doing errrands alone
+                    </li>
+                </ul>
             </div>
         </div>
         <!-- Conclusion -->
@@ -249,43 +458,69 @@
         <!-- correlation diagram -->
         <div class='row'>
             <div class='col-lg-12'>
-            <h3 class='under text-center'>Correlation diagram</h3>
-            <p>This diagram shows the correlation between categories. As you can see, there are only 3 categories that have a strong relation with another category. The correlation with 1.00 (100%) is of the age of people to smoke their first cigarette and if they smoked at least 100 cigarettes in their lifetime. Have a look and see what other relationships you can find.</p>
+                <h3 class='under text-center'>Correlation diagram</h3>
+                <p>This diagram shows the correlation between categories. 
+                    As you can see, there are only 3 categories that have a strong relation with another category. The correlation with 1.00 (100%) is of the age of people to smoke their first cigarette and if they smoked at least 100 cigarettes in their lifetime.
+                    I didn't check this diagram before doing any of the predications. But having spent time finding the questions I was correct in thinking that there are not many 
+                </p>
             </div>
         </div>
         <div class='row'>
             <div class='col-lg-12'>
-            <div class='card'>
-                <div><img id='correlation' src='../static/images/sns_correlation_plot.png', alt='correlation diagram'></div>
-            </div>
+                <div class='card'>
+                    <div><img id='correlation text-center' src='../static/images/sns_correlation_plot.png', alt='correlation diagram'></div>
+                </div>
             </div>
         </div>
         <!-- Summery table prediction outcomes – Initial predications -->
         <div class='row'>
-            <div class='col-lg-12'>
-            <h3 class='under text-center'>Summery table prediction outcomes – Initial predications</h3>
-            <p>text</p>
+            <div class='col-lg-6'>
+                <h3 class='under text-center'>Summery table prediction outcomes – Initial predications</h3>
+                <p>As you can see in the table below, the second prediction was skipped for the mental health and substances (drugs) categories. This was done because there are no additional related categories. The prediction would have been the same as the third predication.</p>
+                <div class='card'>
+                    <div><img class='pred_table img-fluid text-center' src='../static/images/prediction_outcomes_initial.png', alt='initial prediction outcome table'></div>
+                </div>
+                <div class='under card'>
+                    <div><img class='img-fluid' id='seq_alc' src='../static/images/Sequential.png', alt='sequential outcome table alcohol'></div>
+                </div>
+            </div>
+            <!-- Summery table prediction outcomes – Final predications -->
+            <div class='col-lg-6'>
+                <h3 class='under text-center'>Summery table prediction outcomes – Final predications</h3>
+                <p>text</p>
+                <div class='card'>
+                    <div><img class='pred_table img-fluid text-center' src='../static/images/prediction_outcomes_final.png', alt='final prediction outcome table'></div>
+                </div>
             </div>
         </div>
+        <!-- Limitations -->
         <div class='row'>
-            <div class='col-lg-12'>
-            <div class='card'>
-                <div><img id='pred_init' src='../static/images/prediction_outcomes_initial.png', alt='initial prediction outcome table'></div>
+            <div class='col-lg-6'>
+                <h3 class='under text-center'>Limitations</h3>
+                <p>In Australia the only information about health that is publicly available are statistics. Since I need the raw data to apply machine learning, I could not use this. Fortunately, in the USA they are not as protective of their health data. The limitation is that the machine learning is based on behaviour of people in the USA. In Australia, we may, or may not, behave the same. 
+                    I have provided a pie-chart of all categories on the Data page, to have the options of investigating the influences of the responses on the predications, if desirable.
+                </p>
             </div>
-            </div>
-        </div>
-        <!-- cSummery table prediction outcomes – Final predications -->
-        <div class='row'>
-            <div class='col-lg-12'>
-            <h3 class='under text-center'>Summery table prediction outcomes – Final predications</h3>
-            <p>text</p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-12'>
-            <div class='card'>
-                <div><img id='pred_final' src='../static/images/prediction_outcomes_final.png', alt='final prediction outcome table'></div>
-            </div>
+            <!-- If I had more time -->
+            <div class='col-lg-6'>
+                <h3 class='under text-center'>If I had more time</h3>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        As the alcohol category scores really low due to the number of optional outcomes, I would have liked to see if the accuracy of the alcohol predictions would have improved using the similar question as I did for smoking with an answer using groups (bins) for alcohol usage in the past 30 days. It will be interesting to see how the models behave differently by significantly reducing the training data.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        It will be interesting to run the models with different categories to see how the outcome changes.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        I would have liked to have investigated the impact of substance abuse on mental health further.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
