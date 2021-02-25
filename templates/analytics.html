@@ -3,9 +3,12 @@
   <head>
         <!-- required meta tags -->
         <meta charset="UTF-8">
-        <!-- Bootstrap -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
         <!-- Plot.ly -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <!-- font awesome -->
@@ -28,16 +31,16 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Introduction</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="survey">Survey</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="help">Where do I get help?</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="analytics">Analytics</a>
                 </li>
                 <li class="nav-item">
@@ -187,12 +190,12 @@
                     </li>
                 </ul>
                 <p>This dataset already came with binary encoding. Because the fitting of the data to the model didn’t work as it was too large, I realised I had to encode the data further. Some binary codes were in the 90’s or even 900’s. An example is 85 and 985 represent bad data. Once this was completed, there was no more issue.<br>
-                    This project has a timeframe of 2 weeks. I had to manage my time well and didn’t have time to run all models considering the number of models required for this project. I chose to start with the Logistic Regression and Random Forest models.<br>
+                    This project has a timeframe of 2 weeks. I had to manage my time well and didn’t have time to run all the model types considering the number of models required for this project. I chose to start with the Logistic Regression and Random Forest models.<br>
                     It did take 1h20 to complete the fitting and predication of the largest dataset to both models including using the parameter optimiser GridSearchCV.
                 </p>
             </div>
         </div>
-        <!-- model s-->
+        <!-- models-->
         <div class='row'>
             <div class="col-lg-6">
                 <h3 class='under text-center'>Logistic Regression model</h3>
@@ -452,7 +455,26 @@
         <div class='row'>
             <div class='col-12'>
                 <h3 class='under text-center'>Conclusion</h3>
-                <p>text</p>
+                <p>It is possible to fairly accurately predict an outcome with many unrelated categories. I didn’t expect some of these outcomes to perform so well. But I also didn’t expect the alcohol to perform so poorly.<br><br>
+                    What I have learned about the machine learning models:
+                </p>
+                <ul class='fa-ul'>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        Random Forest doesn’t work well with a small number of categories.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        No model works well, including deep learning models, if there are a large number of optional outcomes, like the alcohol predication.
+                    </li>
+                    <li>
+                        <span class='fa-li'>
+                        <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                        o	Using grid search doesn’t automatically mean that the model performs better.
+                    </li>
+                </ul>
             </div>
         </div>
         <!-- correlation diagram -->
@@ -487,7 +509,9 @@
             <!-- Summery table prediction outcomes – Final predications -->
             <div class='col-lg-6'>
                 <h3 class='under text-center'>Summery table prediction outcomes – Final predications</h3>
-                <p>text</p>
+                <p>The green column has been used as the prediction models for the different categories for the survey. I would have chosen to use the lighter highlighted models but didn't save the models as I presumed, wrongly, that they would always perform better than the base model.
+                    The saved Random Forest model files were too large to be able to upload them to Github and used on the website.
+                </p>
                 <div class='card'>
                     <div><img class='pred_table img-fluid text-center' src='../static/images/prediction_outcomes_final.png', alt='final prediction outcome table'></div>
                 </div>
@@ -532,6 +556,7 @@
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v5.js"></script> 
 <!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- Our JS -->

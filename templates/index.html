@@ -3,8 +3,8 @@
   <head>
         <!-- required meta tags -->
         <meta charset="UTF-8">
-        <!-- Bootstrap -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- Plot.ly -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -29,7 +29,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Introduction</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="survey">Survey</a>
                 </li>
                 <li class="nav-item">
@@ -60,53 +60,85 @@
         <!-- general info -->
         <div class='row'>
             <div class='col-lg-12'> 
-                <p>The calculation for the prediction is based on the information shown in the plots below.</p>
+                <p>We are using machine learning on an existing survey to predict your substance usage and mental illness. The calculation for the prediction is based on the information shown in the plots below which represent the outcome of 120,543 surveys.<br><br>
+                    Please note that the prediction models are based on a survey from the US. If you live in a different area, the demographics of your community may differ and may affect the prediction outcome. To help you identify the demographics of the survey model, the <span><a href="data">DATA</a></span> page has a pie chart for each category that the prediction is based on so you can see the influence of the responses on the prediction outcome.
+                </p>
             </div>
         </div>
         <!-- smoking plot & info -->
         <div class='row'>
-            <div class='col-lg-6'>
+            <div class='col-lg-12'> 
+                <h3 class='text-center'>Smoking</h3>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-8'>
                 <div class='card'>
                     <div id='smoking_age_plot'></div>
                 </div>
             </div>        
-            <div class="col-lg-6">
-                <h3 class='text-center'>Smoking</h3>
-                <p>The grouped bar chart on the left shows that the amount of people that smoke is neglegable. The younger the person, the less likely they ever smoked. The older the person, the more likely it is they smoked in the past.</p>
+            <div class="col-lg-4">
+                <p>The grouped bar chart on the left shows that the amount of people that smoke is negligible. Only 0.07% smoked in the last 30 days and 50% has never smoked.<br><br>
+                    Another observation is that the younger the person, the less likely they ever smoked. The older the person, the more likely it is they smoked in the past.<br>
+                    Even though that is to be expected, it does show that 20% of the 18-year-old group have already smoked cigarettes.<br><br>
+                    The accuracy of the prediction of the survey on the next page for this category is 99%.  This is likely due to the outcome being mostly 2 categories. In those categories the outcome per age group is pretty linear so an accurate prediction.
+                </p>
             </div>
         </div>
         <!-- alcohol plot & info -->
         <div class='row'>
-            <div class="col-lg-6">
+            <div class='col-lg-12'> 
                 <h3 class='under text-center'>Alcohol</h3>
-                <p class='text-right'>text</p>
             </div>
-            <div class='col-lg-6'>
-                <div class='card under'>
+        </div>
+        <div class='row'>
+            <div class="col-lg-4">
+                <p class='text-right'>The 0 category represents people who have never had an alcoholic drink. This category ranges from 20 to 34% per age group.<br> 
+                    The highest number of drinkers if from the 21-year-old group with the lowest from the 65+ group.<br>
+                    There is a definite trend on the 10, 15, 20, 25 and 30 days. This could indicate that people couldn’t remember and chose an easy number.<br><br>
+                    Due to the low accuracy, I tried another predication model. Unfortunately, the outcome was the same. To change the accuracy the input (survey questions) needs to be amended or the possible outcomes need to be reduced. 
+                </p>
+            </div>
+            <div class='col-lg-8'>
+                <div class='card'>
                     <div id='alcohol_age_plot'></div>
                 </div>
             </div>        
         </div>
         <!-- Mental health plot & info -->
         <div class='row'>
-            <div class='col-lg-6'>
-                <div class='card under'>
+            <div class='col-lg-12'> 
+                <h3 class='under text-center'>Mental health</h3>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-8'>
+                <div class='card'>
                     <div id='mh_age_plot'></div>
                 </div>
             </div>        
-            <div class="col-lg-6">
-                <h3 class='under text-center'>Mental health</h3>
-                <p>text</p>
+            <div class="col-lg-4">
+                <p>This category is based on the standard K6 mental health assessment based on 6 questions with a total score from 6 to 30. The optional responses are: all of the time/ most of the time/ some of the time/ a little of the time/ none of the time. The questions relate to feelings in the last 30 days: nervous/ hopeless/ restless or fidgety/ so sad or depressed that nothing could cheer you up/ that everything was an effort/ worthless. The cut-off score is 18. 
+                    If you want to do the K6 or K10 test yourself, it is freely available <span><a href="data">HERE</a></span>.<br><br>
+                    The accuracy of the prediction of the survey on the next page for this category is 90%.  Similar to the smoking predication, there are only two optional outcomes with fairly linear training data. The difference between the accuracy between smoking and mental health is that for the smoking prediction, one of the categories contributes to 50% of the prediction. The mental health prediction category contributions are a lot lower.
+                </p>
             </div>
         </div>
         <!-- drugs plot & info -->
         <div class='row'>
-            <div class="col-lg-6">
-                <h3 class='under text-center'>Drug use</h3>
-                <p class='text-right'>text</p>
+            <div class='col-lg-12'> 
+                <h3 class='under text-center'>Substance use</h3>
             </div>
-            <div class='col-lg-6'>
-                <div class='card under'>
+        </div>
+        <div class='row'>
+            <div class="col-lg-4">
+                <p class='text-right'>The hallucinogens are a group of substances consisting of 10 types (LSD (Acid), PCP (Angel dust, Phencyclidine), Peyote, Mescaline, Psilocybin (mushrooms), MDMA (Ecstasy, Molly), Ketamine, Methyltryptamine (Foxy), Salvia Sivinorum, other).<br>
+                    The inhalants are also a group of substances consisting of 13 types ( Amyl nitrite (poppers, Rush), Correction Fluid or Degreaser, Gasoline or lighter fluid, glue or shoe polish or toluene, Anaesthetic (halothane, ether), paint solvents (lacquer thinner), lighter gasses (butane, propane), Nitrous oxide or Whippits, felt-tip pens or markers, spray paints, keyboard cleaner or air duster, Aerosol sprays, other).<br><br>
+                    Each substance has its own prediction model. The accuracy of the prediction of the survey on the next page for these categories’ ranges from 66 to 99%.  The accuracy of pain reliever use is the lowest at 66% and the prediction of the likelihood of the use of heroin is 99%.
+                </p>
+            </div>
+            <div class='col-lg-8'>
+                <div class='card'>
                     <div id='drug_use_plot'></div>
                 </div>
             </div>        
@@ -120,6 +152,7 @@
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v5.js"></script> 
 <!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- Our JS -->

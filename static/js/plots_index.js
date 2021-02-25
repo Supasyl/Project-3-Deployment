@@ -110,7 +110,7 @@ function init() {
         title: 'Smoking cigarettes per age group',
         titlefont: {color: '#003b46'},
         xaxis: {
-            title: 'Number of days per 30 days<br>(per age group)',
+            title: 'Number of days per 30 days (per age group)',
             titlefont: {color: '#003b46'},
             tickfont: {color: '#003b46'},
         },
@@ -405,7 +405,7 @@ function init() {
         x: [48, 11, 2, 1, 3, 62, 20, 14, 11, 85, 91], // %
         // x: [58360, 13506, 2041, 1018, 4087, 74530, 23698, 16404, 13552, 102709, 109720], // numbers
         y: ['MARIJUANA', 'COCAINE', 'CRACK', 'HEROINE', 'METH', 'PAIN_RELIEVER', 'TRANQUILISER', 'STIMULANTS', 'SEDATIVES', 'HALLUCIOGENS', 'INHALENTS'],
-        name: 'likely',
+        name: 'used',
         marker: {color: '#783020'},
         // text: [13, 3, 0, 0, 0, 17, 5, 3, 3, 24, 26],
         type: 'bar',
@@ -416,7 +416,7 @@ function init() {
         x: [52, 89, 98, 99, 97, 38, 80, 86, 89, 15, 9], // %
         // x: [62183, 107037, 118502, 119525, 116456, 46013, 96845, 104139, 106991, 17834, 10823], // numbers
         y: ['MARIJUANA', 'COCAINE', 'CRACK', 'HEROINE', 'METH', 'PAIN_RELIEVER', 'TRANQUILISER', 'STIMULANTS', 'SEDATIVES', 'HALLUCIOGENS', 'INHALENTS'],
-        name: 'not likely',
+        name: 'not used',
         marker: {color: '#ba5536'},
         // text: [6, 11, 13, 13, 12, 5, 10, 11, 11, 1, 1],
         type: 'bar',
@@ -427,10 +427,10 @@ function init() {
     var layout = {
         barmode: 'stack',
         bargap: 0.15,
-        title: 'Lileyhood of substance use in a lifetime',
+        title: 'Use of the substance in their lifetime',
         titlefont: {color: '#003b46'},
         xaxis: {
-            title: 'likelyhood (%)',
+            title: 'substance has or has not been used in the past (%)',
             titlefont: {color: '#003b46'},
             tickfont: {color: '#003b46'},
         },
@@ -448,6 +448,7 @@ function init() {
         },
         paper_bgcolor: '#C4DFE6',
         plot_bgcolor: '#C4DFE6',
+        margin: {l: 110},
     };
 
     Plotly.newPlot('drug_use_plot', data, layout);
