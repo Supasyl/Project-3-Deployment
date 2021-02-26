@@ -9,6 +9,11 @@ width: 350px;
     background-color: #003b46 !important;
 }
 
+/* .logo {
+    z-index: 1000;
+    position: relative;
+} */
+
 html {
     background-color: #C4DFE6;
 }
