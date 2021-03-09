@@ -4,16 +4,18 @@
         <!-- required meta tags -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap -->
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- Plot.ly -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <!-- font awesome -->
+        <script src="https://kit.fontawesome.com/531608a13f.js" crossorigin="anonymous"></script>
         <!-- Our CSS -->
         <link rel="stylesheet" type="text/css" href="../static/css/style.css">
         <!-- Title (shown in browser tab)-->
         <title>Addiction & Mental Health</title>
         <!-- Insert icon with title in browser tab -->
-        <link rel="shortcut icon" type="image/x-icon" href="../static\images\drug-addiction.png"> 
+        <link rel="shortcut icon" type="image/x-icon" href="../static\images\drug-addiction.png">
   </head>
 
   <body>
@@ -51,17 +53,156 @@
     </nav>
 
     <div class="container-fluid">
-        <!-- First info -->
+        <!-- Header -->
         <div class='row'>
             <div class='col-12'> 
-                <h1>You can get help here</h1><br><br>
-                <h3>UNDER CONSTRUCTION</h3>
+                <h1>NEED TO TALK TO SOMEONE NOW?</h1>
             </div>
         </div>
         <div class='row'>
-            <div class='col-lg-12'>
+            <div class='col-4'></div>
+             <!-- SOS -->
+            <div class='col-4'>
+                <div class='card SOS' id='SOS'>
+                    <p class='card-text'>
+                        <strong>Call 000 if you feel somone is at risk.</strong><br><br>
+                        <strong>Mental Health Emergency Response:</strong>
+                    </p>
+                    <ul class='fa-ul'>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Metro - 1300 555 788
+                        </li>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Peel - 1800 676 822
+                        </li>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Rurallink - 1800 552 002
+                        </li>
+                    </ul>
+                    <p class='card-text'>
+                        <strong>Lifeline</strong> 13 11 14<br><br>
+                        <strong>Kids Helpline</strong> 1800 551 800<br><br>
+                        <strong>Alcohol and Drug Support Line:</strong>
+                    </p>
+                    <ul class='fa-ul'>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Metro - 08 9442 5000
+                        </li>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Country - 1800 198 024
+                        </li>
+                    </ul>
+                    <p class='card-text'>
+                        <strong>Parent and Family Drug Support Line:</strong>
+                    </p>
+                    <ul class='fa-ul'>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Metro - 08 9442 5000
+                        </li>
+                        <li>
+                            <span class='fa-li'>
+                            <i class="fa fa-circle-thin fa-xs" aria-hidden="true"></i></span>
+                            Country - 1800 198 024
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='col-4'></div>
+        </div> 
+        <!-- 2nd header -->
+        <div class='row'>
+            <div class='col-12'> 
+                <h1>OR, you can get help here</h1>
             </div>
         </div>
+        <div class='row'>
+            <!-- beyond blue -->
+            <div class='col-lg-4'>
+                <div class='card'>
+                    <h3 class='text-center'>Beyond Blue</h3>
+                    <p class='card-text'>
+                        <a href=https://www.beyondblue.org.au/home target='_blank'>BEYOND BLUE</a> provides information and support to help everyone in Australia achieve their best possible mental health, whatever their age and wherever they live.<br>
+                    </p>
+                    <div>
+                        <img class='img-fluid text-center' id='beyondblue' src='../static/images/beyond_blue.png', alt='beyond blue website screenshot'>
+                    </div>
+                </div>
+            </div>   
+            <!-- reach out -->
+            <div class='col-lg-4'>
+                <div class='card'>
+                    <h3 class='text-center'>Reach Out</h3>
+                    <p class='card-text'>
+                        <a href=https://au.reachout.com target='_blank'>REACH OUT</a> is an online mental health service for young people and their parents in Australia.<br><br>
+                    </p>
+                    <div>
+                        <img class='img-fluid text-center' id='reachout' src='../static/images/reach_out.png', alt='reach out website screenshot'>
+                    </div>
+                </div>
+            </div>  
+            <!-- think mental health  -->
+            <div class='col-lg-4'>
+                <div class='card'>
+                    <h3 class='text-center'>think MENTAL HEALTH</h3>
+                    <p class='card-text'>
+                        <a href=https://www.thinkmentalhealthwa.com.au target='_blank'>think MENTAL HEALTH</a> is a key initiative of the WA-wide suicide prevention strategy - Greater public awareness and united action across the community.<br>
+                    </p>
+                    <div>
+                        <img class='img-fluid text-center' id='thinkmentalhealthwa' src='../static/images/think_mental_health.png', alt='think mental health wa website screenshot'>
+                    </div>
+                </div>
+            </div>   
+        </div>     
+        <div class='row'>
+            <!-- lifeline -->
+            <div class='col-lg-4'>
+                <div class='card under'>
+                    <h3 class='text-center'>Lifeline</h3>
+                    <p class='card-text'>
+                        <a href=https://www.lifeline.org.au target='_blank'>LIFE LINE</a> is a national charity providing all Australians experiencing emotional distress with access to 24 hour crisis support and suicide prevention services.<br>
+                    </p>
+                    <div>
+                        <img class='img-fluid text-center' id='lifeline' src='../static/images/lifeline.png', alt='lifeline website screenshot'>
+                    </div>
+                </div>
+            </div>   
+            <!-- kids help line -->
+            <div class='col-lg-4'>
+                <div class='card under'>
+                    <h3 class='text-center'>Kids Help Line</h3>
+                    <p class='card-text'>
+                        <a href=https://kidshelpline.com.au target='_blank'>KIDS HELP LINE</a> is Australia’s only free (even from a mobile), confidential 24/7 online and phone counselling service for young people aged 5 to 25.<br>
+                    </p>
+                    <div>
+                        <img class='img-fluid text-center' id='kidshelpline' src='../static/images/kidshelpline.png', alt='kids help line website screenshot'>
+                    </div>
+                </div>
+            </div>   
+            <!-- headspace -->
+            <div class='col-lg-4'>
+                <div class='card under'>
+                    <h3 class='text-center'>Headspace</h3>
+                    <p class='card-text'>
+                        <a href=https://headspace.org.au target='_blank'>HEADSPACE</a> is a foundation providing early intervention for young people with mental health, physical health (incl. sexual health), alcohol, other drugs, work and study support.<br>
+                    </p>
+                    <div>
+                        <img class='img-fluid text-center' id='headspace' src='../static/images/headspace.png', alt='headspace website screenshot'>
+                    </div>
+                </div>
+            </div>   
+        </div>     
     </div>
     <!-- footer -->
     <footer class='footer'>
